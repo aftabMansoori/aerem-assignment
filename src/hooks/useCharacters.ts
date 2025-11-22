@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient, keepPreviousData } from '@tanstack/react-query';
 import { fetchCharacters } from '../api/characters';
 import { queryKeys } from '../utils/queryKeys';
 import { QUERY_CONFIG } from '../config/constants';
@@ -11,6 +11,7 @@ export const useCharacters = (page: number) => {
     staleTime: QUERY_CONFIG.STALE_TIME,
     gcTime: QUERY_CONFIG.GC_TIME,
     retry: QUERY_CONFIG.RETRY,
+    placeholderData: keepPreviousData,
   });
 };
 
